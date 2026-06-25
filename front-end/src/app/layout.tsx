@@ -4,7 +4,7 @@ import { Toaster } from "react-hot-toast";
 import { ReactQueryProvider } from "@/shared/components";
 
 export const metadata: Metadata = {
-  title: "Base App",
+  title: "VEM App - Video Editor Mini App",
   description: "Reusable full-stack starter template.",
 };
 
