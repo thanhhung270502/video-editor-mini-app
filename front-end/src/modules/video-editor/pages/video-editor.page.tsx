@@ -254,7 +254,8 @@ export function VideoEditorPage() {
               Load Video
             </Typography>
             <Typography variant="small" color="muted">
-              Paste a YouTube video link to start editing. The video will be fetched and optimized to run on low-memory servers.
+              Paste a YouTube video link to start editing. The video will be fetched and optimized
+              to run on low-memory servers.
             </Typography>
             <div className="flex flex-col gap-3 sm:flex-row">
               <input
@@ -262,7 +263,7 @@ export function VideoEditorPage() {
                 placeholder="https://www.youtube.com/watch?v=..."
                 value={youtubeUrl}
                 onChange={(e) => setYoutubeUrl(e.target.value)}
-                className="flex-1 rounded-md border border-white/10 bg-brand-primary-dark/50 px-4 py-3 text-sm text-white outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                className="bg-brand-primary-dark/50 focus:border-brand-primary focus:ring-brand-primary flex-1 rounded-md border border-white/10 px-4 py-3 text-sm text-white outline-none focus:ring-1"
                 disabled={loading}
               />
               <Button
@@ -283,8 +284,8 @@ export function VideoEditorPage() {
       {/* STEP 2: Download / Processing States */}
       {(taskStatus === "downloading" || taskStatus === "exporting") && (
         <Card className="flex flex-col items-center justify-center p-12 text-center">
-          <Spinner className="mb-4 size-10 text-brand-primary" />
-          <Typography variant="h4" color="primary" className="mb-2 uppercase tracking-wide">
+          <Spinner className="text-brand-primary mb-4 size-10" />
+          <Typography variant="h4" color="primary" className="mb-2 tracking-wide uppercase">
             {taskStatus === "downloading" ? "Downloading Video..." : "Processing & Exporting..."}
           </Typography>
           <Typography variant="body" color="muted" className="mb-6 max-w-md">
@@ -293,7 +294,7 @@ export function VideoEditorPage() {
               : "Running FFmpeg on container. Building video frames and merging transition animations..."}
           </Typography>
           <div className="w-full max-w-md">
-            <div className="flex justify-between mb-1.5">
+            <div className="mb-1.5 flex justify-between">
               <Typography variant="small" color="muted" className="font-semibold">
                 Progress
               </Typography>
@@ -301,9 +302,9 @@ export function VideoEditorPage() {
                 {progress}%
               </Typography>
             </div>
-            <div className="h-2 w-full rounded-full bg-white/10 overflow-hidden">
+            <div className="h-2 w-full overflow-hidden rounded-full bg-white/10">
               <div
-                className="h-full bg-brand-primary transition-all duration-300 ease-out"
+                className="bg-brand-primary h-full transition-all duration-300 ease-out"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -363,13 +364,15 @@ export function VideoEditorPage() {
 
               {taskStatus === "completed" && presignedUrl && (
                 <div className="flex flex-col gap-4 border-t border-white/5 pt-4 text-center">
-                  <Typography variant="h5" color="success">
-                    🎉 Export Completed Successfully!
-                  </Typography>
-                  <Typography variant="small" color="muted">
-                    Your file is ready to download from S3 storage.
-                  </Typography>
-                  <Button variant="success" href={presignedUrl} target="_blank" download>
+                  <div className="flex flex-col gap-1">
+                    <Typography variant="h5" color="primary">
+                      🎉 Export Completed Successfully!
+                    </Typography>
+                    <Typography variant="small" color="muted">
+                      Your file is ready to download from S3 storage.
+                    </Typography>
+                  </div>
+                  <Button variant="primary" href={presignedUrl} target="_blank" download>
                     📥 Download Result Video
                   </Button>
                 </div>

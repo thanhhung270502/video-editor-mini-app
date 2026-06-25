@@ -4,7 +4,11 @@ import { ClipSelection } from "../pages/video-editor.page";
 interface ClipListProps {
   clips: ClipSelection[];
   onRemoveClip: (index: number) => void;
-  onUpdateTransition: (index: number, type: ClipSelection["transition"]["type"], duration: number) => void;
+  onUpdateTransition: (
+    index: number,
+    type: ClipSelection["transition"]["type"],
+    duration: number
+  ) => void;
   onReorder: (index: number, direction: "up" | "down") => void;
   onSeekToClip: (start: number) => void;
   readOnly?: boolean;
@@ -27,7 +31,7 @@ export function ClipList({
 
   if (clips.length === 0) {
     return (
-      <div className="flex h-48 flex-col items-center justify-center rounded-lg border border-dashed border-white/10 bg-brand-primary-dark/20 p-6 text-center">
+      <div className="bg-brand-primary-dark/20 flex h-48 flex-col items-center justify-center rounded-lg border border-dashed border-white/10 p-6 text-center">
         <Typography variant="body" color="muted" className="mb-2">
           No segments added yet
         </Typography>
@@ -59,15 +63,15 @@ export function ClipList({
           return (
             <div
               key={idx}
-              className="flex flex-col gap-3 rounded-lg border border-white/10 bg-brand-primary-dark/30 p-4 transition-all hover:border-white/20"
+              className="bg-brand-primary-dark/30 flex flex-col gap-3 rounded-lg border border-white/10 p-4 transition-all hover:border-white/20"
             >
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-primary text-xs font-bold text-white">
+                  <div className="bg-brand-primary text-md flex size-10 items-center justify-center rounded-full font-bold text-white">
                     {idx + 1}
                   </div>
                   <div>
-                    <Typography variant="body" className="font-medium">
+                    <Typography variant="body" className="font-medium text-white">
                       Clip Segment
                     </Typography>
                     <Typography variant="caption" color="muted" className="font-mono">
@@ -111,7 +115,7 @@ export function ClipList({
                     <Button
                       variant="danger"
                       size="sm"
-                      className="h-8 text-xs hover:bg-error-alt/80 hover:text-white"
+                      className="hover:bg-error-alt/80 h-8 text-xs hover:text-white"
                       onClick={() => onRemoveClip(idx)}
                     >
                       Delete
@@ -124,7 +128,11 @@ export function ClipList({
               {!isLast && (
                 <div className="mt-2 border-t border-white/5 pt-3">
                   {readOnly ? (
-                    <Typography variant="small" color="muted" className="flex items-center gap-1.5 font-mono">
+                    <Typography
+                      variant="small"
+                      color="muted"
+                      className="flex items-center gap-1.5 font-mono"
+                    >
                       ⛓ Transition to Clip {idx + 2}:{" "}
                       <span className="font-semibold text-white capitalize">
                         {clip.transition?.type === "none" || !clip.transition?.type
@@ -134,7 +142,11 @@ export function ClipList({
                     </Typography>
                   ) : (
                     <div className="flex flex-wrap items-center gap-4">
-                      <Typography variant="small" color="muted" className="flex items-center gap-1.5">
+                      <Typography
+                        variant="small"
+                        color="muted"
+                        className="flex items-center gap-1.5"
+                      >
                         ⛓ Transition to Clip {idx + 2}:
                       </Typography>
                       <div className="flex items-center gap-2">
@@ -147,7 +159,7 @@ export function ClipList({
                               clip.transition?.duration || 1
                             )
                           }
-                          className="rounded border border-white/10 bg-brand-primary-dark px-2 py-1 text-xs text-white outline-none focus:border-brand-primary"
+                          className="bg-brand-primary-dark focus:border-brand-primary rounded border border-white/10 px-2 py-1 text-xs text-white outline-none"
                         >
                           <option value="none">Cut (None)</option>
                           <option value="fade">Fade</option>
@@ -166,7 +178,11 @@ export function ClipList({
                           <input
                             type="number"
                             min={0.1}
-                            max={Math.min(5, clip.end - clip.start, clips[idx + 1].end - clips[idx + 1].start)}
+                            max={Math.min(
+                              5,
+                              clip.end - clip.start,
+                              clips[idx + 1].end - clips[idx + 1].start
+                            )}
                             step={0.1}
                             value={clip.transition?.duration || 1}
                             onChange={(e) => {
@@ -178,7 +194,7 @@ export function ClipList({
                               if (val > maxDuration) val = maxDuration;
                               onUpdateTransition(idx, clip.transition.type, val);
                             }}
-                            className="w-16 rounded border border-white/10 bg-brand-primary-dark px-2 py-0.5 text-xs text-white outline-none focus:border-brand-primary font-mono text-center"
+                            className="bg-brand-primary-dark focus:border-brand-primary w-16 rounded border border-white/10 px-2 py-0.5 text-center font-mono text-xs text-white outline-none"
                           />
                         </div>
                       )}
