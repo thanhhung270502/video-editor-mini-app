@@ -5,7 +5,7 @@ import { ReactQueryProvider } from "@/shared/components";
 
 export const metadata: Metadata = {
   title: "VEM App - Video Editor Mini App",
-  description: "Reusable full-stack starter template.",
+  description: "Download YouTube videos, slice segments, apply transition effects, and export.",
 };
 
 export default function RootLayout({
