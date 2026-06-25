@@ -16,6 +16,8 @@ base-project/
 
 ### Backend
 
+#### Option A — Local development
+
 ```bash
 cd back-end
 cp .env.example .env
@@ -24,7 +26,24 @@ npm install
 npm run dev
 ```
 
-API runs at `http://localhost:5000`. Health check: `GET /api/health`.
+#### Option B — Docker (API + LocalStack S3 + Postgres)
+
+Runs the production build inside a container with **0.5 vCPU / 1 GB RAM** limits (matching AWS ECS Fargate constraints). LocalStack provides S3 at `http://localhost:4599`.
+
+```bash
+cd back-end
+cp .env.example .env
+# Fill in Firebase credentials (AWS vars are overridden by docker-compose for LocalStack)
+docker compose up --build
+```
+
+| Service | URL |
+|---------|-----|
+| API | `http://localhost:5000` |
+| LocalStack S3 | `http://localhost:4599` |
+| Postgres | `localhost:5439` |
+
+Health check: `GET /api/health`.
 
 ### Frontend
 
