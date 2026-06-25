@@ -324,10 +324,11 @@ export function VideoEditorPage() {
               />
             </Card>
 
-            {videoMetadata && (
+            {videoMetadata && taskStatus !== "completed" && (
               <VideoTimeline
                 duration={videoMetadata.duration}
                 currentTime={currentTime}
+                clips={clips}
                 onAddClip={handleAddClip}
                 onSeek={handleSeek}
               />
@@ -343,6 +344,7 @@ export function VideoEditorPage() {
                 onUpdateTransition={handleUpdateTransition}
                 onReorder={handleReorderClips}
                 onSeekToClip={handleSeek}
+                readOnly={taskStatus === "completed"}
               />
 
               {clips.length > 0 && taskStatus === "downloaded" && (
