@@ -1,0 +1,110 @@
+/* Typography - Heading Styles */
+/* Heading 3 */
+@utility heading-sm {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-2xl); /* 24px */
+  line-height: var(--line-height-2xl); /* 32px */
+  font-weight: var(--font-weight-bold);
+}
+
+/* Heading 2 */
+@utility heading-md {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-3xl); /* 32px */
+  line-height: var(--line-height-3xl); /* 40px */
+  font-weight: var(--font-weight-bold);
+}
+
+/* Heading 1 */
+@utility heading-lg {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-4xl); /* 40px */
+  line-height: var(--line-height-4xl); /* 48px */
+  font-weight: var(--font-weight-bold);
+}
+
+/* Display Large */
+@utility display-large {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-6xl); /* 56px */
+  line-height: var(--line-height-6xl); /* 64px */
+  font-weight: var(--font-weight-bold);
+}
+
+/* Display XL */
+@utility display-xlarge {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-8xl); /* 72px */
+  line-height: var(--line-height-8xl); /* 80px */
+  font-weight: var(--font-weight-bold);
+}
+
+/* Typography - Body Styles */
+/* Body Micro */
+@utility body-xs {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+  font-weight: var(--font-weight-regular);
+}
+
+/* Body Small */
+@utility body-sm {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-sm);
+  font-weight: var(--font-weight-regular);
+}
+
+/* Body Default */
+@utility body-md {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-md);
+  font-weight: var(--font-weight-regular);
+}
+
+/* Body Large */
+@utility body-lg {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-lg);
+  font-weight: var(--font-weight-regular);
+}
+
+@utility body-xl {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xl);
+  font-weight: var(--font-weight-regular);
+}
+
+/* Font Weight Modifiers */
+@utility font-light {
+  font-weight: var(--font-weight-light);
+}
+
+@utility font-regular {
+  font-weight: var(--font-weight-regular);
+}
+
+@utility font-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+@utility font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+@utility font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Font Family Modifiers */
+@utility font-heading {
+  font-family: var(--font-family-heading);
+}
+
+@utility font-display {
+  font-family: var(--font-family-display);
+}

@@ -1,0 +1,44 @@
+@utility h-button {
+  height: 50px;
+}
+
+@utility h-input {
+  height: 48px;
+}
+
+@utility h-header {
+  height: 72px;
+}
+
+@utility w-sidebar {
+  width: 728px;
+}
+
+@utility max-w-page {
+  max-width: 1440px;
+}
+
+@utility text-jet-black {
+  color: var(--color-teal-850);
+}
+
+@utility bg-jet-black {
+  background-color: var(--color-teal-850);
+}
+
+@utility border-jet-black {
+  border-color: var(--color-teal-850);
+}
+
+
+@utility text-action-orange {
+  color: var(--color-orange-500);
+}
+
+@utility bg-action-orange {
+  background-color: var(--color-orange-500);
+}
+
+@utility border-action-orange {
+  border-color: var(--color-orange-500);
+}

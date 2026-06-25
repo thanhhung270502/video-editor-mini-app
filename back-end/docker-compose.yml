@@ -1,0 +1,42 @@
+services:
+    db:
+        # image: pgvector/pgvector:pg17
+        # restart: always
+        image: postgres:15
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: abc123
+            POSTGRES_DB: kane-blog
+            PGUSER: postgres
+        networks:
+            - data_net
+        command: postgres -N 500
+        ports:
+            - 5439:5432
+        volumes:
+            - type: tmpfs
+              target: /var/lib/postgresql/data
+            # - ./scripts/postgres/pgvector.sql:/docker-entrypoint-initdb.d/pgvector.sql
+    localstack:
+        image: localstack/localstack
+        environment:
+            SERVICES: "s3, sqs, opensearch, sns"
+            HOSTNAME: localstack
+            AWS_ACCESS_KEY_ID: test
+            AWS_SECRET_ACCESS_KEY: test
+        networks:
+            - data_net
+        ports:
+            - "[::1]:4599:4566"
+            - "127.0.0.1:4599:4566" # LocalStack Gateway
+            - "127.0.0.1:4710-4759:4710-4759" # external services port range
+        volumes:
+            - "./scripts/localstack:/etc/localstack/init/ready.d"
+
+volumes:
+    cache:
+        driver: local
+
+networks:
+    data_net:
+        name: data_net

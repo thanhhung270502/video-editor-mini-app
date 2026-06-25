@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+HOOK_DIR="$(cd "$(dirname "$0")" && pwd)"
+WEB_DIR="$(cd "$HOOK_DIR/.." && pwd)"
+export WEB_DIR
+. "$HOOK_DIR/h"
+
+echo "Executing pre-commit hook for front-end side..."
+cd "$WEB_DIR" || exit 1
+
+if ! command -v npm >/dev/null 2>&1; then
+  echo "husky pre-commit: npm not found. Install Node (see web/.nvmrc) or add nvm to ~/.config/husky/init.sh"
+  exit 1
+fi
+
+npm run lint:staged

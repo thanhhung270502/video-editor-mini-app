@@ -1,0 +1,61 @@
+/* Focus Ring Utilities */
+@utility focus-ring {
+  box-shadow: var(--focus-ring);
+  &:focus {
+    box-shadow: var(--focus-ring);
+  }
+  &:focus-within {
+    box-shadow: var(--focus-ring);
+  }
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+  }
+}
+@utility focus-ring-shadow-xs {
+  box-shadow: var(--focus-ring-shadow-xs);
+  &:focus {
+    box-shadow: var(--focus-ring-shadow-xs);
+  }
+  &:focus-within {
+    box-shadow: var(--focus-ring-shadow-xs);
+  }
+  &:focus-visible {
+    box-shadow: var(--focus-ring-shadow-xs);
+  }
+}
+@utility focus-ring-shadow-sm {
+  box-shadow: var(--focus-ring-shadow-sm);
+  &:focus {
+    box-shadow: var(--focus-ring-shadow-sm);
+  }
+  &:focus-within {
+    box-shadow: var(--focus-ring-shadow-sm);
+  }
+  &:focus-visible {
+    box-shadow: var(--focus-ring-shadow-sm);
+  }
+}
+@utility focus-ring-error {
+  box-shadow: var(--focus-ring-error);
+  &:focus {
+    box-shadow: var(--focus-ring-error);
+  }
+  &:focus-within {
+    box-shadow: var(--focus-ring-error);
+  }
+  &:focus-visible {
+    box-shadow: var(--focus-ring-error);
+  }
+}
+@utility focus-ring-error-shadow-xs {
+  box-shadow: var(--focus-ring-error-shadow-xs);
+  &:focus {
+    box-shadow: var(--focus-ring-error-shadow-xs);
+  }
+  &:focus-within {
+    box-shadow: var(--focus-ring-error-shadow-xs);
+  }
+  &:focus-visible {
+    box-shadow: var(--focus-ring-error-shadow-xs);
+  }
+}

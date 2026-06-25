@@ -1,0 +1,156 @@
+/* Border Primary Colors */
+@utility border-brand-primary {
+  border-color: var(--color-brand-primary);
+}
+
+@utility border-brand-primary-alt {
+  border-color: var(--color-brand-primary-light);
+}
+
+@utility border-brand-primary-hover {
+  border-color: var(--color-brand-primary-dark-hover);
+}
+
+@utility border-brand-primary-disabled {
+  border-color: var(--color-brand-primary-light);
+}
+
+@utility border-brand-primary-solid {
+  border-color: var(--color-brand-primary-dark);
+}
+
+/* Border Secondary Colors */
+@utility border-brand-secondary {
+  border-color: var(--color-success-600);
+}
+
+@utility border-brand-secondary-alt {
+  border-color: var(--color-success-100);
+}
+
+@utility border-brand-secondary-hover {
+  border-color: var(--color-success-700);
+}
+
+@utility border-brand-secondary-disabled {
+  border-color: var(--color-success-200);
+}
+
+@utility border-brand-secondary-solid {
+  border-color: var(--color-success-900);
+}
+
+/* Border Success Colors */
+@utility border-success {
+  border-color: var(--color-success-600);
+}
+
+@utility border-success-alt {
+  border-color: var(--color-success-100);
+}
+
+@utility border-success-hover {
+  border-color: var(--color-success-700);
+}
+
+@utility border-success-disabled {
+  border-color: var(--color-success-200);
+}
+
+@utility border-success-solid {
+  border-color: var(--color-success-900);
+}
+
+/* Border Warning Colors */
+@utility border-warning {
+  border-color: var(--color-warning-500);
+}
+
+@utility border-warning-alt {
+  border-color: var(--color-warning-100);
+}
+
+@utility border-warning-hover {
+  border-color: var(--color-warning-600);
+}
+
+@utility border-warning-disabled {
+  border-color: var(--color-warning-200);
+}
+
+@utility border-warning-solid {
+  border-color: var(--color-warning-900);
+}
+
+/* Border Error Colors */
+@utility border-error {
+  border-color: var(--color-error-500);
+}
+
+@utility border-error-alt {
+  border-color: var(--color-error-100);
+}
+
+@utility border-error-hover {
+  border-color: var(--color-error-600);
+}
+
+@utility border-error-disabled {
+  border-color: var(--color-error-200);
+}
+
+@utility border-error-solid {
+  border-color: var(--color-error-900);
+}
+
+/* Border Info Colors */
+@utility border-info {
+  border-color: var(--color-blue-600);
+}
+
+@utility border-info-alt {
+  border-color: var(--color-blue-100);
+}
+
+@utility border-info-hover {
+  border-color: var(--color-blue-700);
+}
+
+@utility border-info-disabled {
+  border-color: var(--color-blue-200);
+}
+
+@utility border-info-solid {
+  border-color: var(--color-blue-900);
+}
+
+
+/* Others */
+@utility border-primary {
+  border-color: var(--color-neutral-300);
+}
+
+@utility border-secondary {
+  border-color: var(--color-neutral-200);
+}
+
+@utility border-tertiary {
+  border-color: var(--color-neutral-100);
+}
+
+@utility border-disabled {
+  border-color: var(--color-neutral-300);
+}
+
+@utility border-teal-primary {
+  border-color: var(--color-teal-850);
+}
+
+/* Border Beige Colors */
+@utility border-beige {
+  border-color: var(--color-beige);
+}
+
+@utility border-light-beige {
+  border-color: var(--color-light-beige);
+}

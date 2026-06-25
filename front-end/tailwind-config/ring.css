@@ -1,0 +1,212 @@
+/* Background Brand Primary Colors */
+@utility ring-brand-primary {
+  --tw-ring-color: var(--color-orange-500);
+}
+
+@utility ring-brand-primary-alt {
+  --tw-ring-color: var(--color-orange-100);
+}
+
+@utility ring-brand-primary-hover {
+  --tw-ring-color: var(--color-orange-600);
+}
+
+@utility ring-brand-primary-disabled {
+  --tw-ring-color: var(--color-orange-200);
+}
+
+@utility ring-brand-primary-solid {
+  --tw-ring-color: var(--color-orange-900);
+}
+
+/* Background Brand Secondary Colors */
+@utility ring-brand-secondary {
+  --tw-ring-color: var(--color-success-600);
+}
+
+@utility ring-brand-secondary-alt {
+  --tw-ring-color: var(--color-success-100);
+}
+
+@utility ring-brand-secondary-hover {
+  --tw-ring-color: var(--color-success-700);
+}
+
+@utility ring-brand-secondary-disabled {
+  --tw-ring-color: var(--color-success-200);
+}
+
+@utility ring-brand-secondary-solid {
+  --tw-ring-color: var(--color-success-900);
+}
+
+/* Background Success Colors */
+@utility ring-success {
+  --tw-ring-color: var(--color-success-600);
+}
+
+@utility ring-success-alt {
+  --tw-ring-color: var(--color-success-100);
+}
+
+@utility ring-success-hover {
+  --tw-ring-color: var(--color-success-700);
+}
+
+@utility ring-success-disabled {
+  --tw-ring-color: var(--color-success-200);
+}
+
+@utility ring-success-solid {
+  --tw-ring-color: var(--color-success-900);
+}
+
+/* Background Warning Colors */
+@utility ring-warning {
+  --tw-ring-color: var(--color-warning-500);
+}
+
+@utility ring-warning-alt {
+  --tw-ring-color: var(--color-warning-100);
+}
+
+@utility ring-warning-hover {
+  --tw-ring-color: var(--color-warning-600);
+}
+
+@utility ring-warning-disabled {
+  --tw-ring-color: var(--color-warning-200);
+}
+
+@utility ring-warning-solid {
+  --tw-ring-color: var(--color-warning-900);
+}
+
+/* Background Error Colors */
+@utility ring-error {
+  --tw-ring-color: var(--color-error-500);
+}
+
+@utility ring-error-alt {
+  --tw-ring-color: var(--color-error-100);
+}
+
+@utility ring-error-hover {
+  --tw-ring-color: var(--color-error-600);
+}
+
+@utility ring-error-disabled {
+  --tw-ring-color: var(--color-error-200);
+}
+
+@utility ring-error-solid {
+  --tw-ring-color: var(--color-error-900);
+}
+
+/* Background Teal Colors */
+@utility ring-teal {
+  --tw-ring-color: var(--color-teal-600);
+}
+
+@utility ring-teal-primary {
+  --tw-ring-color: var(--color-teal-850);
+}
+
+@utility ring-teal-alt {
+  --tw-ring-color: var(--color-teal-100);
+}
+
+@utility ring-teal-hover {
+  --tw-ring-color: var(--color-teal-700);
+}
+
+@utility ring-teal-disabled {
+  --tw-ring-color: var(--color-teal-200);
+}
+
+@utility ring-teal-solid {
+  --tw-ring-color: var(--color-teal-900);
+}
+
+/* Background Info Colors */
+@utility ring-info {
+  --tw-ring-color: var(--color-blue-600);
+}
+
+@utility ring-info-alt {
+  --tw-ring-color: var(--color-blue-100);
+}
+
+@utility ring-info-hover {
+  --tw-ring-color: var(--color-blue-700);
+}
+
+@utility ring-info-disabled {
+  --tw-ring-color: var(--color-blue-200);
+}
+
+@utility ring-info-solid {
+  --tw-ring-color: var(--color-blue-900);
+}
+
+/* Other Colors */
+/* Background Primary Colors */
+@utility ring-primary {
+  --tw-ring-color: var(--color-white);
+}
+
+@utility ring-primary-alt {
+  --tw-ring-color: var(--color-white);
+}
+
+@utility ring-primary-hover {
+  --tw-ring-color: var(--color-neutral-50);
+}
+
+@utility ring-primary-solid {
+  --tw-ring-color: var(--color-neutral-950);
+}
+
+/* Background Secondary Colors */
+@utility ring-secondary {
+  --tw-ring-color: var(--color-neutral-50);
+}
+
+@utility ring-secondary-alt {
+  --tw-ring-color: var(--color-neutral-50);
+}
+
+@utility ring-secondary-hover {
+  --tw-ring-color: var(--color-neutral-100);
+}
+
+@utility ring-secondary-subtle {
+  --tw-ring-color: var(--color-neutral-25);
+}
+
+@utility ring-secondary-solid {
+  --tw-ring-color: var(--color-neutral-600);
+}
+
+/* Background Tertiary Colors */
+@utility ring-tertiary {
+  --tw-ring-color: var(--color-neutral-100);
+}
+
+@utility ring-quaternary {
+  --tw-ring-color: var(--color-neutral-200);
+}
+
+/* Background Card Color */
+@utility ring-neutral-warm {
+  --tw-ring-color: var(--color-neutral-warm-50);
+}
+
+/* Background Beige Colors */
+@utility ring-beige {
+  --tw-ring-color: var(--color-beige);
+}
+
+@utility ring-light-beige {
+  --tw-ring-color: var(--color-light-beige);
+}

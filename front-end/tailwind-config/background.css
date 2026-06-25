@@ -1,0 +1,212 @@
+/* Background Brand Primary Colors */
+@utility bg-brand-primary {
+  background-color: var(--color-brand-primary);
+}
+
+@utility bg-brand-primary-alt {
+  background-color: var(--color-brand-primary-light);
+}
+
+@utility bg-brand-primary-hover {
+  background-color: var(--color-brand-primary-dark-hover);
+}
+
+@utility bg-brand-primary-disabled {
+  background-color: var(--color-brand-primary-light);
+}
+
+@utility bg-brand-primary-solid {
+  background-color: var(--color-brand-primary-dark);
+}
+
+/* Background Brand Secondary Colors */
+/* @utility bg-brand-secondary {
+  background-color: var(--color-success-600);
+}
+
+@utility bg-brand-secondary-alt {
+  background-color: var(--color-success-100);
+}
+
+@utility bg-brand-secondary-hover {
+  background-color: var(--color-success-700);
+}
+
+@utility bg-brand-secondary-disabled {
+  background-color: var(--color-success-200);
+}
+
+@utility bg-brand-secondary-solid {
+  background-color: var(--color-success-900);
+} */
+
+/* Background Success Colors */
+@utility bg-success {
+  background-color: var(--color-success-600);
+}
+
+@utility bg-success-alt {
+  background-color: var(--color-success-100);
+}
+
+@utility bg-success-hover {
+  background-color: var(--color-success-700);
+}
+
+@utility bg-success-disabled {
+  background-color: var(--color-success-200);
+}
+
+@utility bg-success-solid {
+  background-color: var(--color-success-900);
+}
+
+/* Background Warning Colors */
+@utility bg-warning {
+  background-color: var(--color-warning-500);
+}
+
+@utility bg-warning-alt {
+  background-color: var(--color-warning-100);
+}
+
+@utility bg-warning-hover {
+  background-color: var(--color-warning-600);
+}
+
+@utility bg-warning-disabled {
+  background-color: var(--color-warning-200);
+}
+
+@utility bg-warning-solid {
+  background-color: var(--color-warning-900);
+}
+
+/* Background Error Colors */
+@utility bg-error {
+  background-color: var(--color-error-500);
+}
+
+@utility bg-error-alt {
+  background-color: var(--color-error-100);
+}
+
+@utility bg-error-hover {
+  background-color: var(--color-error-600);
+}
+
+@utility bg-error-disabled {
+  background-color: var(--color-error-200);
+}
+
+@utility bg-error-solid {
+  background-color: var(--color-error-900);
+}
+
+/* Background Teal Colors */
+@utility bg-teal {
+  background-color: var(--color-teal-600);
+}
+
+@utility bg-teal-primary {
+  background-color: var(--color-teal-850);
+}
+
+@utility bg-teal-alt {
+  background-color: var(--color-teal-100);
+}
+
+@utility bg-teal-hover {
+  background-color: var(--color-teal-700);
+}
+
+@utility bg-teal-disabled {
+  background-color: var(--color-teal-200);
+}
+
+@utility bg-teal-solid {
+  background-color: var(--color-teal-900);
+}
+
+/* Background Info Colors */
+@utility bg-info {
+  background-color: var(--color-blue-600);
+}
+
+@utility bg-info-alt {
+  background-color: var(--color-blue-100);
+}
+
+@utility bg-info-hover {
+  background-color: var(--color-blue-700);
+}
+
+@utility bg-info-disabled {
+  background-color: var(--color-blue-200);
+}
+
+@utility bg-info-solid {
+  background-color: var(--color-blue-900);
+}
+
+/* Other Colors */
+/* Background Primary Colors */
+@utility bg-primary {
+  background-color: var(--color-white);
+}
+
+@utility bg-primary-alt {
+  background-color: var(--color-white);
+}
+
+@utility bg-primary-hover {
+  background-color: var(--color-neutral-50);
+}
+
+@utility bg-primary-solid {
+  background-color: var(--color-neutral-950);
+}
+
+/* Background Secondary Colors */
+@utility bg-secondary {
+  background-color: var(--color-neutral-50);
+}
+
+@utility bg-secondary-alt {
+  background-color: var(--color-neutral-50);
+}
+
+@utility bg-secondary-hover {
+  background-color: var(--color-neutral-100);
+}
+
+@utility bg-secondary-subtle {
+  background-color: var(--color-neutral-25);
+}
+
+@utility bg-secondary-solid {
+  background-color: var(--color-neutral-600);
+}
+
+/* Background Tertiary Colors */
+@utility bg-tertiary {
+  background-color: var(--color-neutral-100);
+}
+
+@utility bg-quaternary {
+  background-color: var(--color-neutral-200);
+}
+
+/* Background Card Color */
+@utility bg-neutral-warm {
+  background-color: var(--color-neutral-warm-50);
+}
+
+/* Background Beige Colors */
+@utility bg-beige {
+  background-color: var(--color-beige);
+}
+
+@utility bg-light-beige {
+  background-color: var(--color-light-beige);
+}

@@ -1,0 +1,28 @@
+/* Shadow Utilities */
+@utility shadow-xs {
+  box-shadow: var(--shadow-xs);
+}
+@utility shadow-sm {
+  box-shadow: var(--shadow-sm);
+  &::after {
+    box-shadow: var(--shadow-sm);
+  }
+}
+@utility shadow-md {
+  box-shadow: var(--shadow-md);
+  &::after {
+    box-shadow: var(--shadow-md);
+  }
+}
+@utility shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+@utility shadow-xl {
+  box-shadow: var(--shadow-xl);
+}
+@utility shadow-2xl {
+  box-shadow: var(--shadow-2xl);
+}
+@utility shadow-3xl {
+  box-shadow: var(--shadow-3xl);
+}

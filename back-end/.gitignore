@@ -1,0 +1,17 @@
+##### ------ Backend ------ #####
+# Dependencies
+node_modules/
+
+# Environment
+.env
+
+# Firebase service account
+serviceAccountKey.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+dist

@@ -1,0 +1,60 @@
+@layer base {
+  /* Modern scrollbar styles using scrollbar-color (Firefox) */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #d5d7da #e9eaeb; /* thumb track */
+  }
+
+  /* Webkit scrollbar styles (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 0.125rem; /* 2px */
+    height: 0.125rem; /* 2px */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #fafafa;
+    border-radius: 0.25rem; /* 4px */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #d5d7da;
+    border-radius: 0.25rem; /* 4px */
+    border: none;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a4a7ae;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: #fafafa;
+  }
+}
+
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #d5d7da #fafafa;
+  &::-webkit-scrollbar {
+    width: 0.125rem; /* 2px */
+    height: 0.125rem; /* 2px */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #fafafa;
+    border-radius: 0.25rem; /* 4px */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #d5d7da;
+    border-radius: 0.25rem; /* 4px */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #a4a7ae;
+  }
+}
+
+@utility scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}

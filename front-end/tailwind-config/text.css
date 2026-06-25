@@ -1,0 +1,221 @@
+/* Text Primary Colors */
+@utility text-brand-primary {
+  color: var(--color-brand-primary);
+}
+
+@utility text-brand-primary-alt {
+  color: var(--color-brand-primary-light);
+}
+
+@utility text-brand-primary-hover {
+  color: var(--color-brand-primary-dark-hover);
+}
+
+@utility text-brand-primary-disabled {
+  color: var(--color-brand-primary-light);
+}
+
+@utility text-brand-primary-solid {
+  color: var(--color-brand-primary-dark);
+}
+
+@utility text-purple {
+  color: var(--color-purple-500);
+}
+
+@utility text-purple-alt {
+  color: var(--color-purple-100);
+}
+
+@utility text-purple-hover {
+  color: var(--color-purple-600);
+}
+
+@utility text-purple-disabled {
+  color: var(--color-purple-200);
+}
+
+@utility text-purple-solid {
+  color: var(--color-purple-900);
+}
+
+
+/* Text Secondary Colors */
+@utility text-brand-secondary {
+  color: var(--color-success-600);
+}
+
+@utility text-brand-secondary-alt {
+  color: var(--color-success-100);
+}
+
+@utility text-brand-secondary-hover {
+  color: var(--color-success-700);
+}
+
+@utility text-brand-secondary-disabled {
+  color: var(--color-success-200);
+}
+
+@utility text-brand-secondary-solid {
+  color: var(--color-success-900);
+}
+
+/* Text Success Colors */
+@utility text-success {
+  color: var(--color-success-600);
+}
+
+@utility text-success-alt {
+  color: var(--color-success-100);
+}
+
+@utility text-success-hover {
+  color: var(--color-success-700);
+}
+
+@utility text-success-disabled {
+  color: var(--color-success-300);
+}
+
+@utility text-success-solid {
+  color: var(--color-success-900);
+}
+
+/* Text Warning Colors */
+@utility text-warning {
+  color: var(--color-warning-500);
+}
+
+@utility text-warning-alt {
+  color: var(--color-warning-100);
+}
+
+@utility text-warning-hover {
+  color: var(--color-warning-600);
+}
+
+@utility text-warning-disabled {
+  color: var(--color-warning-300);
+}
+
+@utility text-warning-solid {
+  color: var(--color-warning-900);
+}
+
+/* Background Info Colors */
+@utility text-info {
+  color: var(--color-blue-600);
+}
+
+@utility text-info-alt {
+  color: var(--color-blue-100);
+}
+
+@utility text-info-hover {
+  color: var(--color-blue-700);
+}
+
+@utility text-info-disabled {
+  color: var(--color-blue-200);
+}
+
+@utility text-info-solid {
+  color: var(--color-blue-900);
+}
+
+/* Text Error Colors */
+@utility text-error {
+  color: var(--color-error-500);
+}
+
+@utility text-error-alt {
+  color: var(--color-error-100);
+}
+
+@utility text-error-hover {
+  color: var(--color-error-600);
+}
+
+@utility text-error-disabled {
+  color: var(--color-error-300);
+}
+
+@utility text-error-solid {
+  color: var(--color-error-900);
+}
+
+/* Text Gray Colors */
+@utility text-gray {
+  color: var(--color-neutral-500);
+}
+
+@utility text-gray-alt {
+  color: var(--color-neutral-100);
+}
+
+@utility text-gray-hover {
+  color: var(--color-neutral-600);
+}
+
+@utility text-gray-disabled {
+  color: var(--color-neutral-300);
+}
+
+@utility text-gray-solid {
+  color: var(--color-neutral-900);
+}
+
+/* Text Dark Colors */
+@utility text-dark {
+  color: var(--color-black);
+}
+
+@utility text-dark-alt {
+  color: var(--color-black-100);
+}
+
+@utility text-dark-hover {
+  color: var(--color-black-600);
+}
+
+@utility text-dark-solid {
+  color: var(--color-black);
+}
+
+@utility text-dark-disabled {
+  color: var(--color-black-300);
+}
+
+@utility text-teal-primary {
+  color: var(--color-teal-850);
+}
+
+/* Other Colors */
+@utility text-primary {
+  color: var(--color-white);
+}
+
+@utility text-secondary {
+  color: var(--color-neutral-200);
+}
+
+@utility text-tertiary {
+  color: var(--color-neutral-300);
+}
+
+@utility text-quaternary {
+  color: var(--color-neutral-400);
+}
+
+@utility text-disabled {
+  color: var(--color-neutral-300);
+}
+
+@utility text-placeholder {
+  color: var(--color-neutral-400);
+}
+
+@utility text-placeholder-subtle {
+  color: var(--color-neutral-200);
+}
