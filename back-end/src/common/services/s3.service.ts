@@ -93,7 +93,15 @@ class S3Service {
     });
 
     // Generate signed URL
-    const url = await getSignedUrl(this.client, command, { expiresIn: expiresInSeconds });
+    let url = await getSignedUrl(this.client, command, { expiresIn: expiresInSeconds });
+
+    // When running inside Docker, browser client cannot resolve container hostname 'localstack'
+    // We replace the internal endpoint with the external endpoint (localhost) for browser visibility
+    const externalEndpoint = process.env.AWS_S3_EXTERNAL_ENDPOINT || "http://localhost:4599";
+    if (url.includes("http://localstack:4566")) {
+      url = url.replace("http://localstack:4566", externalEndpoint);
+    }
+
     return url;
   }
 }

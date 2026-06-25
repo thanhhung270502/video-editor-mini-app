@@ -181,7 +181,7 @@ export class VideoEditorService {
   /**
    * Run ffprobe to get duration, width, height
    */
-  private probeVideo(filePath: string): Promise<{ duration: number; width: number; height: number }> {
+  private probeVideo(filePath: string): Promise<{ duration: number; width: number; height: number; hasAudio: boolean }> {
     return new Promise((resolve, reject) => {
       ffmpeg.ffprobe(filePath, (err, metadata) => {
         if (err) {
@@ -192,8 +192,9 @@ export class VideoEditorService {
         const videoStream = metadata.streams?.find((s) => s.codec_type === "video");
         const width = videoStream?.width || 0;
         const height = videoStream?.height || 0;
+        const hasAudio = metadata.streams?.some((s) => s.codec_type === "audio") || false;
 
-        resolve({ duration, width, height });
+        resolve({ duration, width, height, hasAudio });
       });
     });
   }
@@ -278,7 +279,8 @@ export class VideoEditorService {
 
       // 3. Build FFmpeg command and apply edit/transitions
       console.log(`Starting FFmpeg processing for task ${taskId}`);
-      await this.processFFmpeg(localRawPath, localOutputPath, clips, (progressPercent) => {
+      const hasAudio = task.metadata?.hasAudio !== false;
+      await this.processFFmpeg(localRawPath, localOutputPath, clips, hasAudio, (progressPercent) => {
         // Map 0-100% of FFmpeg export progress to 10% - 90% of overall export progress
         const overallProgress = Math.round(10 + progressPercent * 0.8);
         this.updateTaskProgress(taskId, "exporting", overallProgress, io);
@@ -378,6 +380,7 @@ export class VideoEditorService {
     inputPath: string,
     outputPath: string,
     clips: ClipSelection[],
+    hasAudio: boolean,
     onProgress: (percent: number) => void
   ): Promise<void> {
     return new Promise((resolve, reject) => {
@@ -385,16 +388,39 @@ export class VideoEditorService {
         return reject(new Error("No clips selected for export."));
       }
 
+      // Helper to calculate progress percentage using timemark and target duration
+      // to avoid fluent-ffmpeg's incorrect percent calculations (based on input video duration)
+      const getProgressPercent = (progress: any, targetDuration: number): number | null => {
+        if (progress.timemark) {
+          const parts = progress.timemark.split(":");
+          if (parts.length === 3) {
+            const seconds = parseInt(parts[0], 10) * 3600 + parseInt(parts[1], 10) * 60 + parseFloat(parts[2]);
+            if (!isNaN(seconds) && targetDuration > 0) {
+              return Math.min(99, Math.round((seconds / targetDuration) * 100));
+            }
+          }
+        }
+        return null;
+      };
+
       // Check if it's a simple trim of 1 clip without transition
       if (clips.length === 1 && (!clips[0].transition || clips[0].transition.type === "none")) {
         const clip = clips[0];
         const duration = clip.end - clip.start;
-        ffmpeg(inputPath)
+        const cmd = ffmpeg(inputPath)
           .setStartTime(clip.start)
-          .setDuration(duration)
-          .output(outputPath)
+          .setDuration(duration);
+
+        if (!hasAudio) {
+          cmd.noAudio();
+        }
+
+        cmd.output(outputPath)
           .on("progress", (progress) => {
-            if (progress.percent) {
+            const pct = getProgressPercent(progress, duration);
+            if (pct !== null) {
+              onProgress(pct);
+            } else if (progress.percent) {
               onProgress(Math.min(99, progress.percent));
             }
           })
@@ -415,7 +441,9 @@ export class VideoEditorService {
         const start = clips[i].start;
         const duration = clips[i].end - start;
         filters.push(`[0:v]trim=start=${start}:duration=${duration},setpts=PTS-STARTPTS[v${i}]`);
-        filters.push(`[0:a]atrim=start=${start}:duration=${duration},asetpts=PTS-STARTPTS[a${i}]`);
+        if (hasAudio) {
+          filters.push(`[0:a]atrim=start=${start}:duration=${duration},asetpts=PTS-STARTPTS[a${i}]`);
+        }
       }
 
       // 2. Chaining transition effects
@@ -433,9 +461,12 @@ export class VideoEditorService {
         if (type === "none" || duration <= 0) {
           // Simply concat video and audio
           filters.push(`[${currentV}][v${i}]concat=n=2:v=1:a=0[vtemp${i}]`);
-          filters.push(`[${currentA}][a${i}]concat=n=2:v=0:a=1[atemp${i}]`);
           currentV = `vtemp${i}`;
-          currentA = `atemp${i}`;
+
+          if (hasAudio) {
+            filters.push(`[${currentA}][a${i}]concat=n=2:v=0:a=1[atemp${i}]`);
+            currentA = `atemp${i}`;
+          }
           currentDuration += clipDuration;
         } else {
           // Calculate offset in the merged stream
@@ -445,9 +476,12 @@ export class VideoEditorService {
           }
           
           filters.push(`[${currentV}][v${i}]xfade=transition=${type}:duration=${duration}:offset=${offset}[vtemp${i}]`);
-          filters.push(`[${currentA}][a${i}]acrossfade=d=${duration}[atemp${i}]`);
           currentV = `vtemp${i}`;
-          currentA = `atemp${i}`;
+
+          if (hasAudio) {
+            filters.push(`[${currentA}][a${i}]acrossfade=d=${duration}[atemp${i}]`);
+            currentA = `atemp${i}`;
+          }
           currentDuration += clipDuration - duration;
         }
       }
@@ -455,19 +489,22 @@ export class VideoEditorService {
       // Start building command
       const cmd = ffmpeg(inputPath)
         .complexFilter(filters.join("; "))
-        .map(`[${currentV}]`)
-        .map(`[${currentA}]`)
-        .output(outputPath);
+        .map(`[${currentV}]`);
+
+      if (hasAudio) {
+        cmd.map(`[${currentA}]`);
+      } else {
+        cmd.noAudio();
+      }
+
+      cmd.output(outputPath);
 
       cmd.on("progress", (progress) => {
-        if (progress.percent) {
+        const pct = getProgressPercent(progress, currentDuration);
+        if (pct !== null) {
+          onProgress(pct);
+        } else if (progress.percent) {
           onProgress(Math.min(99, progress.percent));
-        } else if (progress.timemark) {
-          // Fallback if percent is not available: compare timestamp against total output duration
-          const parts = progress.timemark.split(":");
-          const seconds = parseInt(parts[0], 10) * 3600 + parseInt(parts[1], 10) * 60 + parseFloat(parts[2]);
-          const percent = Math.round((seconds / currentDuration) * 100);
-          onProgress(Math.min(99, percent));
         }
       })
       .on("end", () => {

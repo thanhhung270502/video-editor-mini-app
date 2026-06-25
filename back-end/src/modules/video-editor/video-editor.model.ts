@@ -18,6 +18,7 @@ export interface VideoTask {
     duration: number; // in seconds
     width: number;
     height: number;
+    hasAudio?: boolean;
   };
   error?: string;
   createdAt: Date;
