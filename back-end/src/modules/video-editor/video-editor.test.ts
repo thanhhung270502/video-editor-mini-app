@@ -90,6 +90,7 @@ describe("Video Editor Routes", () => {
           taskId: "some_id",
           clips: [
             { start: 0, end: 5, transition: { type: "fade", duration: 6 } }, // transition 6 > clip 5
+            { start: 10, end: 20, transition: { type: "none", duration: 1 } },
           ],
         });
 
@@ -97,15 +98,45 @@ describe("Video Editor Routes", () => {
       expect(res.body.success).toBe(false);
       expect(res.body.message).toContain("cannot be longer than clip duration");
     });
+    it("returns 400 when transition duration exceeds next clip duration", async () => {
+      const res = await request(app)
+        .post("/api/video/export")
+        .send({
+          taskId: "some_id",
+          clips: [
+            { start: 0, end: 10, transition: { type: "fade", duration: 6 } }, // transition is 6s
+            { start: 15, end: 20, transition: { type: "none", duration: 1 } }, // next clip is only 5s
+          ],
+        });
 
+      expect(res.status).toBe(400);
+      expect(res.body.success).toBe(false);
+      expect(res.body.message).toContain("cannot be longer than the next clip's duration");
+    });
+
+    it("returns 400 when the last clip has a transition", async () => {
+      const res = await request(app)
+        .post("/api/video/export")
+        .send({
+          taskId: "some_id",
+          clips: [
+            { start: 0, end: 10, transition: { type: "none", duration: 1 } },
+            { start: 15, end: 25, transition: { type: "fade", duration: 1 } }, // last clip has fade transition
+          ],
+        });
+
+      expect(res.status).toBe(400);
+      expect(res.body.success).toBe(false);
+      expect(res.body.message).toContain("last clip cannot have a transition");
+    });
     it("returns 202 accepted when export request is valid", async () => {
       const res = await request(app)
         .post("/api/video/export")
         .send({
           taskId: "valid_id",
           clips: [
-            { start: 0, end: 10, transition: { type: "none", duration: 1 } },
-            { start: 15, end: 25, transition: { type: "fade", duration: 1 } },
+            { start: 0, end: 10, transition: { type: "fade", duration: 1 } },
+            { start: 15, end: 25, transition: { type: "none", duration: 1 } },
           ],
         });
 

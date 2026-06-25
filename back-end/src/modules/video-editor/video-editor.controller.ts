@@ -57,7 +57,8 @@ export class VideoEditorController {
       }
 
       // Validate clips structure and duration
-      for (const clip of clips as ClipSelection[]) {
+      for (let i = 0; i < clips.length; i++) {
+        const clip = clips[i] as ClipSelection;
         if (typeof clip.start !== "number" || typeof clip.end !== "number") {
           res.status(400).json({ success: false, message: "Clip start and end must be numbers." });
           return;
@@ -66,15 +67,30 @@ export class VideoEditorController {
           res.status(400).json({ success: false, message: `Invalid clip timestamps: start=${clip.start}, end=${clip.end}` });
           return;
         }
-        if (clip.transition) {
+        if (clip.transition && clip.transition.type !== "none") {
+          if (i === clips.length - 1) {
+            res.status(400).json({ success: false, message: "The last clip cannot have a transition." });
+            return;
+          }
           if (typeof clip.transition.duration !== "number" || clip.transition.duration < 0) {
             res.status(400).json({ success: false, message: "Transition duration must be a non-negative number." });
             return;
           }
-          if (clip.transition.duration > (clip.end - clip.start)) {
+          const clipDuration = clip.end - clip.start;
+          const nextClip = clips[i + 1] as ClipSelection;
+          const nextClipDuration = nextClip.end - nextClip.start;
+
+          if (clip.transition.duration > clipDuration) {
             res.status(400).json({
               success: false,
-              message: `Transition duration (${clip.transition.duration}s) cannot be longer than clip duration (${clip.end - clip.start}s).`,
+              message: `Transition duration (${clip.transition.duration}s) cannot be longer than clip duration (${clipDuration}s).`,
+            });
+            return;
+          }
+          if (clip.transition.duration > nextClipDuration) {
+            res.status(400).json({
+              success: false,
+              message: `Transition duration (${clip.transition.duration}s) cannot be longer than the next clip's duration (${nextClipDuration}s).`,
             });
             return;
           }

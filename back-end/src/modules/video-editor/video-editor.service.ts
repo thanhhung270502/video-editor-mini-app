@@ -454,7 +454,7 @@ export class VideoEditorService {
       for (let i = 1; i < clips.length; i++) {
         const clip = clips[i];
         const clipDuration = clip.end - clip.start;
-        const trans = clip.transition || { type: "none", duration: 1 };
+        const trans = clips[i - 1].transition || { type: "none", duration: 1 };
         const type = trans.type;
         const duration = trans.duration;
 
